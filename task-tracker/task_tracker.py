@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # File path for tasks.json
-TASKS_FILE = 'tasks.json'
+TASKS_FILE = 'task-tracker/tasks.json'
 
 # Load tasks from the JSON file
 def load_tasks():
