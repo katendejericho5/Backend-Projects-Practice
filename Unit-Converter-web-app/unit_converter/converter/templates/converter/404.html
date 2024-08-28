@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .error-container h1 {
+            font-size: 100px;
+            font-weight: 700;
+            color: #dc3545;
+        }
+        .error-container p {
+            font-size: 24px;
+        }
+        .error-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .error-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-container">
+            <h1>404</h1>
+            <p>Oops! The page you’re looking for doesn’t exist.</p>
+            <p>It might have been moved or deleted. <a href="{% url 'home' %}">Go back to the homepage</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
