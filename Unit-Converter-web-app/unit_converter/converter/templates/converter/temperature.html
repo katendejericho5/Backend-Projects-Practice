@@ -1,27 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperature Converter</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Temperature Converter</h1>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="value" placeholder="Value" required>
-        <select name="from_unit">
-            <option value="Celsius">Celsius</option>
-            <option value="Fahrenheit">Fahrenheit</option>
-            <option value="Kelvin">Kelvin</option>
-        </select>
-        <select name="to_unit">
-            <option value="Celsius">Celsius</option>
-            <option value="Fahrenheit">Fahrenheit</option>
-            <option value="Kelvin">Kelvin</option>
-        </select>
-        <button type="submit">Convert</button>
-    </form>
-    {% if converted_value %}
-    <p>Converted Value: {{ converted_value }}</p>
-    {% endif %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Temperature Converter</h1>
+        <div class="card p-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="value">Value</label>
+                    <input type="text" name="value" class="form-control" placeholder="Enter value" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="from_unit">From</label>
+                        <select name="from_unit" class="form-control">
+                            <option value="Celsius">Celsius</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Kelvin">Kelvin</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="to_unit">To</label>
+                        <select name="to_unit" class="form-control">
+                            <option value="Celsius">Celsius</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Kelvin">Kelvin</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Convert</button>
+            </form>
+            {% if converted_value %}
+            <div class="alert alert-success mt-3 text-center">
+                Converted Value: <strong>{{ converted_value }}</strong>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
