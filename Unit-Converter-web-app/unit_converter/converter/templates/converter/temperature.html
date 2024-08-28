@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="value" placeholder="Value" required>
+        <select name="from_unit">
+            <option value="Celsius">Celsius</option>
+            <option value="Fahrenheit">Fahrenheit</option>
+            <option value="Kelvin">Kelvin</option>
+        </select>
+        <select name="to_unit">
+            <option value="Celsius">Celsius</option>
+            <option value="Fahrenheit">Fahrenheit</option>
+            <option value="Kelvin">Kelvin</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if converted_value %}
+    <p>Converted Value: {{ converted_value }}</p>
+    {% endif %}
+</body>
+</html>
