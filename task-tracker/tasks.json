@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "description": "Run 1000 miles",
+        "status": "todo",
+        "createdAt": "2024-08-28 19:15:37.807226",
+        "updatedAt": "2024-08-28 19:21:29.973983"
+    },
+    {
+        "id": 2,
+        "description": "buy grocories",
+        "status": "todo",
+        "createdAt": "2024-08-28 19:20:44.449241",
+        "updatedAt": "2024-08-28 19:21:55.644966"
+    }
+]
