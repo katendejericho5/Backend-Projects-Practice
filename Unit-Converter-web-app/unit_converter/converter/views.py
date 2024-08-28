@@ -43,30 +43,74 @@ def convert_temperature(value, from_unit, to_unit):
 
 def length_converter(request):
     if request.method == 'POST':
-        value = float(request.POST.get('value'))
+        value_str = request.POST.get('value')
         from_unit = request.POST.get('from_unit')
         to_unit = request.POST.get('to_unit')
-        converted_value = convert_length(value, from_unit, to_unit)
-        return render(request, 'converter/length.html', {'converted_value': converted_value})
+        
+        try:
+            # Validate and convert the value
+            value = float(value_str)
+            # Validate units
+            valid_units = ['millimeter', 'centimeter', 'meter', 'kilometer', 'inch', 'foot', 'yard', 'mile']
+            if from_unit not in valid_units or to_unit not in valid_units:
+                raise ValueError("Invalid unit selected")
+
+            converted_value = convert_length(value, from_unit, to_unit)
+            return render(request, 'converter/length.html', {'converted_value': converted_value})
+        
+        except ValueError as e:
+            # Handle invalid value or unit
+            error_message = f"Error: {e}" if str(e) else "Invalid number entered. Please enter a valid number."
+            return render(request, 'converter/length.html', {'error_message': error_message})
 
     return render(request, 'converter/length.html')
 
+
 def weight_converter(request):
     if request.method == 'POST':
-        value = float(request.POST.get('value'))
+        value_str = request.POST.get('value')
         from_unit = request.POST.get('from_unit')
         to_unit = request.POST.get('to_unit')
-        converted_value = convert_weight(value, from_unit, to_unit)
-        return render(request, 'converter/weight.html', {'converted_value': converted_value})
+        
+        try:
+            # Validate and convert the value
+            value = float(value_str)
+            # Validate units
+            valid_units = ['milligram', 'gram', 'kilogram', 'ounce', 'pound']
+            if from_unit not in valid_units or to_unit not in valid_units:
+                raise ValueError("Invalid unit selected")
+
+            converted_value = convert_weight(value, from_unit, to_unit)
+            return render(request, 'converter/weight.html', {'converted_value': converted_value})
+
+        except ValueError as e:
+            # Handle invalid value or unit
+            error_message = f"Error: {e}" if str(e) else "Invalid number entered. Please enter a valid number."
+            return render(request, 'converter/weight.html', {'error_message': error_message})
 
     return render(request, 'converter/weight.html')
 
+
 def temperature_converter(request):
     if request.method == 'POST':
-        value = float(request.POST.get('value'))
+        value_str = request.POST.get('value')
         from_unit = request.POST.get('from_unit')
         to_unit = request.POST.get('to_unit')
-        converted_value = convert_temperature(value, from_unit, to_unit)
-        return render(request, 'converter/temperature.html', {'converted_value': converted_value})
+        
+        try:
+            # Validate and convert the value
+            value = float(value_str)
+            # Validate units
+            valid_units = ['celsius', 'fahrenheit', 'kelvin']
+            if from_unit not in valid_units or to_unit not in valid_units:
+                raise ValueError("Invalid unit selected")
+
+            converted_value = convert_temperature(value, from_unit, to_unit)
+            return render(request, 'converter/temperature.html', {'converted_value': converted_value})
+
+        except ValueError as e:
+            # Handle invalid value or unit
+            error_message = f"Error: {e}" if str(e) else "Invalid number entered. Please enter a valid number."
+            return render(request, 'converter/temperature.html', {'error_message': 'Invalid input entered. Please enter a valid number.'})
 
     return render(request, 'converter/temperature.html')

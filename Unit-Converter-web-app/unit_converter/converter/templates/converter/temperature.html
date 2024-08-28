@@ -7,6 +7,27 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Unit Converter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'length_converter' %}">Length</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'weight_converter' %}">Weight</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'temperature_converter' %}">Temperature</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4">Temperature Converter</h1>
         <div class="card p-4">
@@ -20,17 +41,17 @@
                     <div class="form-group col-md-6">
                         <label for="from_unit">From</label>
                         <select name="from_unit" class="form-control">
-                            <option value="Celsius">Celsius</option>
-                            <option value="Fahrenheit">Fahrenheit</option>
-                            <option value="Kelvin">Kelvin</option>
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="kelvin">Kelvin</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="to_unit">To</label>
                         <select name="to_unit" class="form-control">
-                            <option value="Celsius">Celsius</option>
-                            <option value="Fahrenheit">Fahrenheit</option>
-                            <option value="Kelvin">Kelvin</option>
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="kelvin">Kelvin</option>
                         </select>
                     </div>
                 </div>
@@ -41,6 +62,12 @@
                 Converted Value: <strong>{{ converted_value }}</strong>
             </div>
             {% endif %}
+            {% if error_message %}
+<div class="alert alert-danger mt-3 text-center">
+    {{ error_message }}
+</div>
+{% endif %}
+
         </div>
     </div>
 
