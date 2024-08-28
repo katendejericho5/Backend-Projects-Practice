@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Length Converter</title>
+</head>
+<body>
+    <h1>Length Converter</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="value" placeholder="Value" required>
+        <select name="from_unit">
+            <option value="millimeter">Millimeter</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="inch">Inch</option>
+            <option value="foot">Foot</option>
+            <option value="yard">Yard</option>
+            <option value="mile">Mile</option>
+        </select>
+        <select name="to_unit">
+            <option value="millimeter">Millimeter</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="inch">Inch</option>
+            <option value="foot">Foot</option>
+            <option value="yard">Yard</option>
+            <option value="mile">Mile</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if converted_value %}
+    <p>Converted Value: {{ converted_value }}</p>
+    {% endif %}
+</body>
+</html>

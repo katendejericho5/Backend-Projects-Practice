@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weight Converter</title>
+</head>
+<body>
+    <h1>Weight Converter</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="value" placeholder="Value" required>
+        <select name="from_unit">
+            <option value="milligram">Milligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+        <select name="to_unit">
+            <option value="milligram">Milligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if converted_value %}
+    <p>Converted Value: {{ converted_value }}</p>
+    {% endif %}
+</body>
+</html>
