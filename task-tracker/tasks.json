@@ -9,8 +9,8 @@
     {
         "id": 2,
         "description": "buy grocories",
-        "status": "todo",
+        "status": "done",
         "createdAt": "2024-08-28 19:20:44.449241",
-        "updatedAt": "2024-08-28 19:21:55.644966"
+        "updatedAt": "2024-08-28 19:25:23.272213"
     }
 ]
