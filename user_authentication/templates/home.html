@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .welcome-section {
+            background-image: url('https://source.unsplash.com/1600x900/?nature');
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding: 100px 0;
+        }
+        .welcome-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .welcome-section p {
+            font-size: 1.25rem;
+        }
+        .content-section {
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">MyApp</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Create Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1>Welcome to MyApp!</h1>
+        <p>Your gateway to a world of possibilities.</p>
+        <a href="#" class="btn btn-primary btn-lg mt-3">Get Started</a>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 1</h5>
+                        <p class="card-text">Discover the amazing features of our platform.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 2</h5>
+                        <p class="card-text">Enhance your experience with our tools.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 3</h5>
+                        <p class="card-text">Join a community of like-minded individuals.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
