@@ -1,9 +1,12 @@
+# app/auth.py
 from flask import Blueprint, request, jsonify
-from app import db, jwt, limiter
+from app.extensions import db, jwt, limiter
 from app.models import User
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 
 bp = Blueprint('auth', __name__)
+
+# Your route handlers...
 
 @bp.route('/register', methods=['POST'])
 @limiter.limit("5 per minute")

@@ -1,7 +1,8 @@
+# app/todos.py
 from flask import Blueprint, request, jsonify
-from app import db, limiter
 from app.models import Todo
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.extensions import db, limiter
 
 bp = Blueprint('todos', __name__)
 
