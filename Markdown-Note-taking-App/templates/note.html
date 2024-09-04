@@ -1,9 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .note-container {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .note-title {
+            margin-bottom: 20px;
+        }
+        .note-content {
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
-    <div>{{ content|safe }}</div>
+    <div class="container">
+        <div class="note-container">
+            <h1 class="note-title">{{ content.title }}</h1>
+            <div class="note-content">
+                {{ content | safe }}
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

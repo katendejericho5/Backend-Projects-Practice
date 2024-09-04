@@ -1,24 +1,25 @@
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from markdown import markdown
-import re
 from flask_migrate import Migrate
 import language_tool_python
-
-
 
 app = Flask(__name__)
 
 # Configure the database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Import models
-from models import Note
-
-# Initialize database migration
-migrate = Migrate(app, db)
 tool = language_tool_python.LanguageTool('en-US')
+
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"<Note {self.title}>"
 
 @app.route('/check-grammar', methods=['POST'])
 def check_grammar():
@@ -28,7 +29,15 @@ def check_grammar():
 
     # Check grammar using LanguageTool
     matches = tool.check(content)
-    errors = [{"message": match.message, "offset": match.offset, "length": match.errorLength} for match in matches]
+    errors = [
+        {
+            "message": match.message,
+            "suggestions": match.replacements,
+            "offset": match.offset,
+            "length": match.errorLength
+        }
+        for match in matches
+    ]
 
     return jsonify({"errors": errors})
 
@@ -36,7 +45,6 @@ def check_grammar():
 def save_note():
     content = request.json.get('content')
     title = request.json.get('title')
-    
     if not content or not title:
         return jsonify({"error": "Title and content are required"}), 400
 
