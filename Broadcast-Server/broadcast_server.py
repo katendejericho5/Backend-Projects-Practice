@@ -1,10 +1,14 @@
 import socket
 import threading
 
-# Global list to store connected clients
+# Global lists to store connected clients and message history
 clients = []
+message_history = []  # List to store message history
 
 def broadcast(message, current_client):
+    # Add the message to the history
+    message_history.append(message.decode('utf-8'))
+
     # Send message to all clients except the sender
     for client in clients:
         if client != current_client:
@@ -14,7 +18,19 @@ def broadcast(message, current_client):
                 client.close()
                 remove(client)
 
+def send_history(client_socket):
+    # Send stored message history to the newly connected client
+    for message in message_history:
+        try:
+            client_socket.send(message.encode('utf-8'))
+        except:
+            client_socket.close()
+            remove(client_socket)
+
 def handle_client(client_socket):
+    # Send message history to the client first
+    send_history(client_socket)
+
     while True:
         try:
             # Receive message from client
