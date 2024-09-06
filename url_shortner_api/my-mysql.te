@@ -1,0 +1,11 @@
+
+module my-mysql 1.0;
+
+require {
+	type var_lib_t;
+	type mysqld_t;
+	class file { getattr open read write };
+}
+
+#============= mysqld_t ==============
+allow mysqld_t var_lib_t:file { getattr open read write };
