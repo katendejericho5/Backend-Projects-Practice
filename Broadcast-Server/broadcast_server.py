@@ -1,5 +1,6 @@
 import socket
 import threading
+import sys
 
 # Global lists to store connected clients and message history
 clients = []
@@ -61,8 +62,7 @@ def start_server(port=12345):
         threading.Thread(target=handle_client, args=(client_socket,)).start()
 
 def main():
-    import sys
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 2:   # ensring that the use provides the correct number of arguments
         print("Usage: broadcast-server start")
         sys.exit(1)
     
